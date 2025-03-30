@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?>
+Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.Net.Compilers\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers\build\Microsoft.Net.Compilers.props')" Label="Paket" />
+  <Import Project="packages\EntityFramework\build\EntityFramework.props" Condition="Exists('packages\EntityFramework\build\EntityFramework.props')" Label="Paket" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6C25ACBA-30D2-4BB6-A8D4-EAB5FA186217}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CpApi</RootNamespace>
+    <AssemblyName>CpApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdController.cs" />
+    <Compile Include="Controllers\ApiBase.cs" />
+    <Compile Include="Controllers\BillingController.cs" />
+    <Compile Include="Controllers\BlueSnapController.cs" />
+    <Compile Include="Controllers\CampaignController.cs" />
+    <Compile Include="Controllers\IPNController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\RetailerController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
+    <Compile Include="Controllers\ValidateController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Providers\AuthorizeToken.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.rtl.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.rtl.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.rtl.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.rtl.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.rtl.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.rtl.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.rtl.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.rtl.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.rtl.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-utilities.rtl.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.rtl.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.min.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-grid.rtl.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-reboot.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Resources\DailyReportEmail.html" />
+    <Content Include="Resources\HttpCodeMapping.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\modernizr-2.8.3.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\respond.matchmedia.addListener.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.esm.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.esm.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.min.js.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.esm.js.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.esm.min.js.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.js.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.min.js.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1.slim.min.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1-vsdoc.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1.min.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1.slim.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1.slim.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.6.1.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.validate-vsdoc.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\Web.config">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Certificates.p12" />
+    <Content Include="Resources\IP-COUNTRY.BIN" />
+    <Content Include=".ebextensions\0010_modifyDeployHook.config" />
+    <Content Include=".ebextensions\0020_settings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\cp.pubxml" />
+    <None Include="Properties\PublishProfiles\cpApi.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.validate.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\respond.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\respond.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Settings\AppSettingsAPI.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Retailer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="paket.references">
+    </Content>
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <PropertyGroup>
+        <__paket__EntityFramework_props>netcoreapp3.0\EntityFramework</__paket__EntityFramework_props>
+        <__paket__EntityFramework_targets>netcoreapp3.0\EntityFramework</__paket__EntityFramework_targets>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <Import Project="packages\EntityFramework\build\$(__paket__EntityFramework_props).props" Condition="Exists('packages\EntityFramework\build\$(__paket__EntityFramework_props).props')" Label="Paket" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63137</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61204/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Antlr3.Runtime">
+          <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="EntityFramework">
+          <HintPath>packages\EntityFramework\lib\netstandard2.1\EntityFramework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>packages\EntityFramework\lib\netstandard2.1\EntityFramework.SqlServer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And (($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="log4net">
+          <HintPath>packages\log4net\lib\netstandard1.3\log4net.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos'))">
+      <ItemGroup>
+        <Reference Include="log4net">
+          <HintPath>packages\log4net\lib\netstandard2.0\log4net.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.ApplicationInsights">
+          <HintPath>packages\Microsoft.ApplicationInsights\lib\netstandard2.0\Microsoft.ApplicationInsights.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.AI.DependencyCollector">
+          <HintPath>packages\Microsoft.ApplicationInsights.DependencyCollector\lib\netstandard2.0\Microsoft.AI.DependencyCollector.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.AI.PerfCounterCollector">
+          <HintPath>packages\Microsoft.ApplicationInsights.PerfCounterCollector\lib\netstandard2.0\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.AI.WindowsServer">
+          <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer\lib\netstandard2.0\Microsoft.AI.WindowsServer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+          <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel\lib\netstandard2.0\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Net.Http.Formatting">
+          <HintPath>packages\Microsoft.AspNet.WebApi.Client\lib\netstandard2.0\System.Net.Http.Formatting.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Caching.Abstractions">
+          <HintPath>packages\Microsoft.Extensions.Caching.Abstractions\lib\net7.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Caching.Memory">
+          <HintPath>packages\Microsoft.Extensions.Caching.Memory\lib\net7.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+          <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions\lib\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+          <HintPath>packages\Microsoft.Extensions.Logging.Abstractions\lib\net7.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="packages\EntityFramework\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework\build\EntityFramework.targets')" Label="Paket" />
+  <Import Project="packages\EntityFramework\build\$(__paket__EntityFramework_targets).targets" Condition="Exists('packages\EntityFramework\build\$(__paket__EntityFramework_targets).targets')" Label="Paket" />
+  <Import Project="packages\Microsoft.ApplicationInsights.DependencyCollector\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.DependencyCollector\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Label="Paket" />
+  <Import Project="packages\Microsoft.ApplicationInsights.PerfCounterCollector\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.PerfCounterCollector\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Label="Paket" />
+  <Import Project="packages\Microsoft.ApplicationInsights.Web\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.Web\build\Microsoft.ApplicationInsights.Web.targets')" Label="Paket" />
+  <Import Project="packages\Microsoft.ApplicationInsights.WindowsServer\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.WindowsServer\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Label="Paket" />
+  <Import Project="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Label="Paket" />
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\Microsoft.Extensions.Logging.Generators.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\cs\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\de\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\es\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\fr\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\it\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\ja\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\ko\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\pl\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\pt-BR\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\ru\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\tr\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\zh-Hans\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn3.11\cs\zh-Hant\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\Microsoft.Extensions.Logging.Generators.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\cs\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\de\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\es\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\fr\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\it\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\ja\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\ko\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\pl\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\pt-BR\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\ru\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\tr\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\zh-Hans\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.0\cs\zh-Hant\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\Microsoft.Extensions.Logging.Generators.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\cs\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\de\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\es\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\fr\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\it\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\ja\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\ko\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\pl\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\pt-BR\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\ru\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\tr\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\zh-Hans\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="packages\Microsoft.Extensions.Logging.Abstractions\analyzers\dotnet\roslyn4.4\cs\zh-Hant\Microsoft.Extensions.Logging.Generators.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Options">
+          <HintPath>packages\Microsoft.Extensions.Options\lib\net7.0\Microsoft.Extensions.Options.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Extensions.Primitives">
+          <HintPath>packages\Microsoft.Extensions.Primitives\lib\net7.0\Microsoft.Extensions.Primitives.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Win32.Registry">
+          <HintPath>packages\Microsoft.Win32.Registry\lib\netstandard2.0\Microsoft.Win32.Registry.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Microsoft.Win32.SystemEvents">
+          <HintPath>packages\Microsoft.Win32.SystemEvents\lib\net7.0\Microsoft.Win32.SystemEvents.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>packages\Newtonsoft.Json\lib\net6.0\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And (($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json.Bson">
+          <HintPath>packages\Newtonsoft.Json.Bson\lib\netstandard1.3\Newtonsoft.Json.Bson.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos'))">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json.Bson">
+          <HintPath>packages\Newtonsoft.Json.Bson\lib\netstandard2.0\Newtonsoft.Json.Bson.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And (($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="mscorlib">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Buffers">
+          <HintPath>packages\System.Buffers\lib\netstandard1.1\System.Buffers.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And (($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos'))">
+      <ItemGroup>
+        <Reference Include="System.Buffers">
+          <HintPath>packages\System.Buffers\lib\netstandard2.0\System.Buffers.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.CodeDom">
+          <HintPath>packages\System.CodeDom\lib\net7.0\System.CodeDom.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows'))">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.Annotations">
+          <HintPath>packages\System.ComponentModel.Annotations\lib\netstandard2.1\System.ComponentModel.Annotations.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Configuration.ConfigurationManager">
+          <HintPath>packages\System.Configuration.ConfigurationManager\lib\net7.0\System.Configuration.ConfigurationManager.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android'))">
+      <ItemGroup>
+        <Reference Include="System.Data.SqlClient">
+          <HintPath>packages\System.Data.SqlClient\lib\netcoreapp2.1\System.Data.SqlClient.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.DiagnosticSource">
+          <HintPath>packages\System.Diagnostics.DiagnosticSource\lib\net7.0\System.Diagnostics.DiagnosticSource.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.EventLog">
+          <HintPath>packages\System.Diagnostics.EventLog\lib\net7.0\System.Diagnostics.EventLog.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.PerformanceCounter">
+          <HintPath>packages\System.Diagnostics.PerformanceCounter\lib\net7.0\System.Diagnostics.PerformanceCounter.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Drawing.Common">
+          <HintPath>packages\System.Drawing.Common\lib\net7.0\System.Drawing.Common.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And (($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.IO.FileSystem.AccessControl">
+          <HintPath>packages\System.IO.FileSystem.AccessControl\lib\netstandard1.3\System.IO.FileSystem.AccessControl.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos'))">
+      <ItemGroup>
+        <Reference Include="System.IO.FileSystem.AccessControl">
+          <HintPath>packages\System.IO.FileSystem.AccessControl\lib\netstandard2.0\System.IO.FileSystem.AccessControl.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Security.AccessControl">
+          <HintPath>packages\System.Security.AccessControl\lib\net6.0\System.Security.AccessControl.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.ProtectedData">
+          <HintPath>packages\System.Security.Cryptography.ProtectedData\lib\net7.0\System.Security.Cryptography.ProtectedData.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Security.Permissions">
+          <HintPath>packages\System.Security.Permissions\lib\net7.0\System.Security.Permissions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And (($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Security.Principal.Windows">
+          <HintPath>packages\System.Security.Principal.Windows\lib\netstandard1.3\System.Security.Principal.Windows.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos'))">
+      <ItemGroup>
+        <Reference Include="System.Security.Principal.Windows">
+          <HintPath>packages\System.Security.Principal.Windows\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="System.Windows.Extensions">
+          <HintPath>packages\System.Windows.Extensions\lib\net7.0\System.Windows.Extensions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v7.0' Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.17763.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.18362.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '10.0.19041.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows' And '$(TargetPlatformVersion)' == '8.0') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'Windows') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'android') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'ios') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'macos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'tvos') Or ($(TargetFrameworkVersion) == 'v7.0' And '$(TargetPlatformIdentifier)' == 'watchos'))">
+      <ItemGroup>
+        <Reference Include="WebGrease">
+          <HintPath>packages\WebGrease\lib\WebGrease.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+</Project

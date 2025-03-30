@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.e451.sba-test</groupId>
+    <artifactId>sba-test-app-root</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <name>sba-test-app-root</name>
+    <description>Brief Description of this application. - Created by Project Initializer Microservice Template 1.0.1.</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>11</java.version>
+        <spring-cloud-services.version>3.3.0</spring-cloud-services.version>
+        <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    </properties>
+
+    <modules>
+        <module>rest-application</module>
+        <module>integration-tests</module>
+    </modules>
+
+</project>
