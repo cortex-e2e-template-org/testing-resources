@@ -101,13 +101,6 @@
 	</build>
 	<repositories>
 		<repository>
-			<id>central</id>
-			<url>https://artifactory.8451.cloud:443/artifactory/java-all</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>maven_central</id>
 			<name>Maven Central</name>
 			<url>https://repo.maven.apache.org/maven2/</url>
