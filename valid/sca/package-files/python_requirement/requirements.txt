@@ -1,5 +1,7 @@
 pandas
 scipy
 matplotlib
-tensorflow==2.8.4
+tensorflow
 validate_email
+setuptools<78
+pytest
