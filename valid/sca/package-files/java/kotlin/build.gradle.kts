@@ -22,6 +22,8 @@ dependencies {
     implementation("software.amazon.awssdk:s3") {
         exclude("software.amazon.awssdk", "netty-nio-client")
     }
+    implementation("com.itextpdf:itext-core:9.3.0")
+    implementation("com.mysql:mysql-connector-j:8.3.0")
 }
 
 tasks.getByName<Test>("test") {
