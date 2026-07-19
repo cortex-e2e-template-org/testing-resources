@@ -1,0 +1,13 @@
+{
+  "name": "malicious-packages-test-repo-transitive",
+  "version": "1.0.0",
+  "description": "Validates MR 16145 (BCE-59685): per-root finding fan-out for transitive malicious deps. Two synthetic non-malicious wrapper packages (mal-wrapper-a, mal-wrapper-b) each pull in the same malicious leaf (clickpy@1.0.1) as a transitive. Expected: two findings emitted for clickpy, one per root, each with dependencyType=TRANSITIVE and root_package_name=mal-wrapper-{a,b}. Also includes one direct malicious (secdriven) as a control \u2014 expected: one finding with dependencyType=DIRECT and root_package_name=secdriven.",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "mal-wrapper-a": "1.0.0",
+    "mal-wrapper-b": "1.0.0",
+    "secdriven": "1.0.8",
+    "lodash": "4.17.21"
+  }
+}

@@ -1,0 +1,11 @@
+# RubyGems malicious-package SCA fixture.
+# Verified present in cas_malicious_packages Firestore (MAL-2024-6265).
+# Gem 1-as-identity_function, version 1.0.1.
+# The packages-api /query endpoint returns isMalicious:true for this exact name+version.
+source "https://rubygems.org"
+
+# Malicious
+gem "1-as-identity_function", "1.0.1"
+
+# Benign control gem (should NOT be flagged)
+gem "rake", "13.2.1"

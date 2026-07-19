@@ -1,0 +1,17 @@
+{
+  "name": "malicious-packages-test-repo-nolock",
+  "version": "1.0.0",
+  "description": "Same as mal-pkg-scan but without lockfile \u2014 verifies path-normalization fix (BCE-59577 AC3)",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "clickpy": "1.0.1",
+    "asavie-ui": "99.0.2",
+    "@newline53/newline-ts-sdk": "1.0.1",
+    "secdriven": "1.0.8",
+    "dds-js-idl": "1.0.0",
+    "harmony-enablers-test-2026": "1.0.0",
+    "lodash": "4.17.21",
+    "express": "4.18.2"
+  }
+}

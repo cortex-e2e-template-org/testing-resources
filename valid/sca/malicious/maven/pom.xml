@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Maven malicious-package SCA fixture.
+  Verified present in cas_malicious_packages Firestore (MAL-2025-2552).
+  groupId:artifactId = io.github.leetcrunch:scribejava-core, version 8.3.5.
+  The packages-api /query endpoint returns isMalicious:true for this exact GAV.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example.fixtures</groupId>
+    <artifactId>malicious-package-fixture</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- Malicious (typosquat of scribejava-core) -->
+        <dependency>
+            <groupId>io.github.leetcrunch</groupId>
+            <artifactId>scribejava-core</artifactId>
+            <version>8.3.5</version>
+        </dependency>
+
+        <!-- Benign control dependency (should NOT be flagged) -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.2.1-jre</version>
+        </dependency>
+    </dependencies>
+</project>

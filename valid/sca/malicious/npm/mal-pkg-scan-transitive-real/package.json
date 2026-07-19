@@ -1,0 +1,10 @@
+{
+  "name": "malicious-packages-test-repo-transitive-real",
+  "version": "1.0.0",
+  "description": "Real-tree transitive test for MR 16145 (BCE-59685). The famous 2018 event-stream attack: event-stream@3.3.6 (non-malicious carrier, direct dep) transitively pulls flatmap-stream@0.1.1 (MALICIOUS) via its dependency declaration. Expected: 1 BC_MAL_1 finding for flatmap-stream@0.1.1 with dependencyType=TRANSITIVE, root_package_name=event-stream, root_package_version=3.3.6, and instance_id suffixed with ':event-stream@3.3.6'.",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "event-stream": "3.3.6"
+  }
+}
