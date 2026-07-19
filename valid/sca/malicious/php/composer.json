@@ -1,0 +1,10 @@
+{
+    "_comment": "Packagist malicious-package SCA fixture. Verified present in cas_malicious_packages Firestore (MAL-2026-3637). Package intercom-php version 5.0.2. The packages-api /query endpoint returns isMalicious:true for this exact name+version. The 'intercom-php' require below is the malicious one; 'monolog/monolog' is a benign control that should NOT be flagged.",
+    "name": "example/malicious-package-fixture",
+    "description": "SCA fixture containing a known-malicious Packagist package",
+    "type": "project",
+    "require": {
+        "intercom-php": "5.0.2",
+        "monolog/monolog": "3.7.0"
+    }
+}

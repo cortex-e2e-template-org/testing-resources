@@ -1,0 +1,10 @@
+{
+  "name": "pseudo-root-b",
+  "version": "1.0.0",
+  "description": "Second root for multi-root fan-out test. Declares event-stream@3.3.6 as a dependency, so npm dedupe collapses both pulls into one flatmap-stream node but the SCA dt_builder records BOTH root ids in the asset's root_packages map.",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "event-stream": "3.3.6"
+  }
+}

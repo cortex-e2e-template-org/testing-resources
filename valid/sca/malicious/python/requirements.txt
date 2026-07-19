@@ -1,0 +1,7 @@
+# PyPI malicious-package SCA fixture
+# Verified present in cas_malicious_packages Firestore (MAL-2025-2925).
+# The packages-api /query endpoint returns isMalicious:true for this exact name+version.
+0-8==0.0.0.1
+
+# Benign control package (should NOT be flagged)
+requests==2.32.3

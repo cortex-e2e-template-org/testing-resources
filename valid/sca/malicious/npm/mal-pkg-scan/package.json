@@ -1,0 +1,18 @@
+{
+  "name": "malicious-packages-test-repo",
+  "version": "1.0.0",
+  "description": "Test repo for malicious packages detection on DEV tenant (real OSV.dev entries, installable from npm registry)",
+  "license": "UNLICENSED",
+  "private": true,
+  "_comment": "All entries below verified against the public OSV API (api.osv.dev) AND the npm registry (registry.npmjs.org) on 2026-05-23. Picking installable malicious versions matters because most malicious packages are unpublished by npm after detection (replaced with a placeholder 0.0.1-security stub), making them impossible to npm/pnpm install. The packages below still have their malicious version tarballs available. See ./README.md for expected scan results.",
+  "dependencies": {
+    "clickpy": "1.0.1",
+    "asavie-ui": "99.0.2",
+    "@newline53/newline-ts-sdk": "1.0.1",
+    "secdriven": "1.0.8",
+    "dds-js-idl": "1.0.0",
+    "harmony-enablers-test-2026": "1.0.0",
+    "lodash": "4.17.21",
+    "express": "4.18.2"
+  }
+}

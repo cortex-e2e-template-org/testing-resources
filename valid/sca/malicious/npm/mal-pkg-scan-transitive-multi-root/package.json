@@ -1,0 +1,11 @@
+{
+  "name": "malicious-packages-test-repo-transitive-multi-root",
+  "version": "1.0.0",
+  "description": "Multi-root transitive test for MR 16145 (BCE-59685). Two distinct root packages both transitively pull flatmap-stream@0.1.1 (MALICIOUS) via event-stream@3.3.6. Root A is event-stream itself (direct). Root B is a local pseudo-root that also declares event-stream@3.3.6 — npm dedupes to a single flatmap-stream node, but the SCA asset's root_packages map contains BOTH root ids. Expected: 2 BC_MAL_1 findings for flatmap-stream@0.1.1, same malwareId, different root_package_name (event-stream@3.3.6 vs pseudo-root-b@1.0.0). One finding will be DIRECT (root==leaf path via event-stream → event-stream itself is a root) and one TRANSITIVE.",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "event-stream": "3.3.6",
+    "pseudo-root-b": "file:./pseudo-root-b"
+  }
+}
