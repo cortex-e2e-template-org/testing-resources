@@ -1,5 +1,0 @@
-pandas
-scipy
-matplotlib
-tensorflow==2.8.4
-validate_email,
