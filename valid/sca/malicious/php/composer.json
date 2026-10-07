@@ -4,7 +4,7 @@
     "description": "SCA fixture containing a known-malicious Packagist package",
     "type": "project",
     "require": {
-        "intercom-php": "5.0.2",
+        "intercom/intercom-php": "5.0.2",
         "monolog/monolog": "3.7.0"
     }
 }
